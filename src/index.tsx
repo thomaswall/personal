@@ -6,7 +6,7 @@ import THREED from '/structures/3d'
 
 function App() {
     return (
-        <div id="main" className="w-full h-full m-4">
+        <div id="main" className="w-screen h-screen">
             <THREED />
         </div>
     )
