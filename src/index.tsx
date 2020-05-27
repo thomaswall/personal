@@ -3,7 +3,9 @@ import React, { useEffect } from 'react'
 import * as ReactDOM from 'react-dom'
 import THREED from '/structures/3d'
 
-import wecIcon from 'url:./assets/wecIcon.svg'
+const wecIcon = require('url:./assets/wecIcon.svg')
+
+let card_style = {backgroundColor: "#ffeecc", opacity: 0.8}
 
 
 function App() {
@@ -12,12 +14,12 @@ function App() {
             <div className="w-full left-0 h-screen fixed z-10">
                 <THREED />
             </div>
-            <div className="w-screen bg-blue font-ibmmono bg-gray-500" style={{height: "700%"}}>
+            <div className="w-screen font-ibmmono bg-gray-500" style={{height: "700%"}}>
                 <div className="flex flex-col p-12 z-20 absolute" style={{
                     marginLeft: `43vw`,
                     width: `50vw`
                 }}>
-                    <div className='bg-white w-full m-12 p-12 shadow-2xl rounded'>
+                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
                         <div className="text-6xl p-4">
                             Tom Wall
                         </div>
@@ -43,7 +45,7 @@ function App() {
                             LinkedIn
                         </a>
                     </div>
-                    <div className='bg-white w-full m-12 p-12 shadow-2xl rounded'>
+                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
                         <div className="text-4xl p-4 flex">
                             <img src={wecIcon} />
                             <div className="p-4">IBM Immersive Environments</div>
@@ -65,7 +67,7 @@ function App() {
                             and subscribes / publishes to exotic I/O.
                         </div>
                     </div>
-                    <div className='bg-white w-full m-12 p-12 shadow-2xl rounded'>
+                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
                         <a className="text-4xl p-4 underline" href="https://ytoi.io" target="_blank">
                             ytoi.io
                         </a>
@@ -79,7 +81,7 @@ function App() {
                             We have supported art shows, music performances, and event spaces.
                         </div>
                     </div>
-                    <div className='bg-white w-full m-12 p-12 shadow-2xl rounded'>
+                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
                         <div className="text-4xl p-4">
                             Astrum (in development)
                         </div>
@@ -94,7 +96,7 @@ function App() {
                             Built in UE4 with supporting infrastructure in Elixir.
                         </div>
                     </div>
-                    <div className='bg-white w-full m-12 p-12 shadow-2xl rounded'>
+                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
                         <div className="text-4xl p-4">
                             Millennial Media (Formerly Jumptap)
                         </div>
@@ -113,7 +115,7 @@ function App() {
                             Jumptap was acquired by Millennial Media in 2013.
                         </div>
                     </div>
-                    <div className='bg-white w-full m-12 p-12 shadow-2xl rounded'>
+                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
                         <div className="text-4xl p-4">
                             Skills
                         </div>
