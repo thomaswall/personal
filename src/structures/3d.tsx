@@ -14,7 +14,8 @@ let mouse = new THREE.Vector2();
 let raycaster = new THREE.Raycaster();
 let invisPlane
 let scroll = 0
-let starting_content_x = -3500
+let starting_content_x = -2700
+let wratio
 
 
 let vertexShader = `
@@ -327,7 +328,9 @@ export default function THREED(props) {
       div.appendChild( iframe );
 
       let object = new CSS3DObject( div );
-      object.position.set( starting_content_x - 2500, 0, -1300)
+      let diff = (document.getElementById("ibm").clientHeight
+        + document.getElementById("ytoi").clientHeight) / document.body.scrollHeight
+      object.position.set( starting_content_x - diff * 16000, 0, -1300)
       object.rotation.y = 0;
       object.orig_pos = object.position.clone()
       vidGroup.add( object );
@@ -349,7 +352,10 @@ export default function THREED(props) {
       div.appendChild( iframe );
 
       let object = new CSS3DObject( div );
-      object.position.set( starting_content_x - 5000, 0, -1300)
+      let diff = (document.getElementById("astrum").clientHeight 
+        + document.getElementById("ibm").clientHeight
+        + document.getElementById("ytoi").clientHeight) / document.body.scrollHeight
+      object.position.set( starting_content_x - diff * 18000, 0, -1300)
       object.rotation.y = 0;
       object.orig_pos = object.position.clone()
       vidGroup.add( object );
@@ -406,6 +412,7 @@ export default function THREED(props) {
 
         vidGroup = new THREE.Group();
         scene.add(vidGroup)
+        wratio = window.innerWidth / window.innerHeight
         addElement()
         addAstrumElement()
         addytoiElement()
@@ -440,7 +447,7 @@ export default function THREED(props) {
         let perc_scroll = scroll / document.body.scrollHeight
         for(let mesh of vidGroup.children) {
           mesh.lookAt(new THREE.Vector3((mouse.x - 0.5) * exag - 850, (mouse.y - 0.5) * exag + 100, 0.5))
-          mesh.position.x = -1500 + mesh.orig_pos.x + perc_scroll * 17 * window.innerHeight
+          mesh.position.x = -200 * wratio + mesh.orig_pos.x + perc_scroll * 10000 * wratio
         }
           
     }

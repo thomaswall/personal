@@ -47,7 +47,7 @@ function App() {
                             LinkedIn
                         </a>
                     </div>
-                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
+                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style} id="ibm">
                         <div className="text-4xl p-4 flex">
                             <img src={wecIcon} />
                             <div className="p-4">IBM Immersive Environments</div>
@@ -72,7 +72,7 @@ function App() {
                             Form factors include a 3-machine, <span style={highlight}>7200x2700</span> wall, a <span style={highlight}>5-machine-360-degree</span> room, and web.
                         </div>
                     </div>
-                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
+                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style} id="ytoi">
                         <a className="text-4xl p-4 underline" href="https://ytoi.io" target="_blank">
                             ytoi.io
                         </a>
@@ -86,7 +86,7 @@ function App() {
                             We have supported <span style={highlight}> art</span> shows, <span style={highlight}> music</span> performances, and event spaces.
                         </div>
                     </div>
-                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
+                    <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style} id="astrum">
                         <div className="text-4xl p-4">
                             Astrum (in development)
                         </div>
