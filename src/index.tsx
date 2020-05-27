@@ -6,15 +6,24 @@ import THREED from '/structures/3d'
 
 function App() {
     return (
-        <div id="main" className="bg-black h-screen">
-            <div className="w-screen">
-                <div className="w-1/2 left-0 h-screen absolute">
-                    <THREED />
-                </div>
-                <div className='bg-white text-black h-1/2 w-1/2' style={{
-                    marginLeft: `${window.innerWidth * 3 / 5}px`,
-                    width: "25%"}}>
-                    HELLO
+        <div id="main" className="bg-black">
+            <div className="w-1/2 left-0 h-screen fixed z-10">
+                <THREED />
+            </div>
+            <div className="w-screen bg-black" style={{height: "350%"}}>
+                <div className="flex flex-col p-12 z-20 absolute" style={{
+                    marginLeft: `43vw`,
+                    width: `50vw`
+                }}>
+                    <div className='bg-white w-full h-screen m-12'>
+                        HELLO
+                    </div>
+                    <div className='bg-white w-full h-screen m-12'>
+                        HELLO
+                    </div>
+                    <div className='bg-white w-full h-screen m-12'>
+                        HELLO
+                    </div>
                 </div>
             </div>
         </div>
