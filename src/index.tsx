@@ -125,7 +125,7 @@ function App() {
                             Skills
                         </div>
                         <div className="text-med pl-4 pt-4">
-                            C++ - OpenGL - WebGL
+                            C++ - OpenGL - WebGL - GLSL
                         </div>
                         <div className="text-med pl-4">
                              openFrameworks - three.js - Unreal Engine 4
