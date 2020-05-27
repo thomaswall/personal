@@ -14,7 +14,7 @@ let mouse = new THREE.Vector2();
 let raycaster = new THREE.Raycaster();
 let invisPlane
 let scroll = 0
-let starting_content_x = -2700
+let starting_content_x = -3200
 let wratio
 
 
