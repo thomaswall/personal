@@ -66,7 +66,7 @@ function App() {
                         </div>
                         <div className="text-lg p-4">
                             We built a framework from scratch that <span style={highlight}>frame-syncs</span> across multiple machines, 
-                            and subscribes / publishes to exotic I/O.
+                            and subscribes / publishes to exotic I/O. We support applications written in UE4, openFrameworks, <a className="underline" href="https://www.oblong.com/g-speak" target="_blank">gspeak</a>, and pure OpenGL.
                         </div>
                         <div className="text-lg p-4">
                             Form factors include a 3-machine, <span style={highlight}>7200x2700</span> wall, a <span style={highlight}>5-machine-360-degree</span> room, and web.
