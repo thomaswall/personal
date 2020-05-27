@@ -6,6 +6,7 @@ import THREED from '/structures/3d'
 const wecIcon = require('url:./assets/wecIcon.svg')
 
 let card_style = {backgroundColor: "#ffeecc", opacity: 0.8}
+let highlight = {color: "#1a53ff"}
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
             <div className="w-full left-0 h-screen fixed z-10">
                 <THREED />
             </div>
-            <div className="w-screen font-ibmmono bg-gray-500" style={{height: "700%"}}>
+            <div className="w-screen font-ibmmono bg-gray-500">
                 <div className="flex flex-col p-12 z-20 absolute" style={{
                     marginLeft: `43vw`,
                     width: `50vw`
@@ -24,8 +25,9 @@ function App() {
                             Tom Wall
                         </div>
                         <div className="text-base p-4">
-                        I'm an interactive-graphics
-                        engineer. I specialize in realtime applications running in a
+                        I'm an interactive-<span style={highlight}>graphics </span>
+                         and <span style={highlight}> backend</span> engineer. I specialize in 
+                        <span style={highlight}> real-time</span> applications running in a
                         multitude of different
                         environments that influence the
                         user's behavior through a
@@ -38,10 +40,10 @@ function App() {
                         to the aesthetic choices of the
                         applications themselves.
                         </div>
-                        <a className="text-xs pt-8 pl-4" href="https://twitter.com/llawmot" target="_blank">
+                        <a style={highlight} className="text-xs pt-8 pl-4" href="https://twitter.com/llawmot" target="_blank">
                             Twitter
                         </a>
-                        <a className="text-xs pt-8 pl-4" href="https://linkedin.com/in/llawmot" target="_blank">
+                        <a style={highlight} className="text-xs pt-8 pl-4" href="https://linkedin.com/in/llawmot" target="_blank">
                             LinkedIn
                         </a>
                     </div>
@@ -58,13 +60,16 @@ function App() {
                             immersive spaces across North America and Europe.
                         </div>
                         <div className="text-lg p-4">
-                            The work couples multimodal forms of interactions (voice, spatial,
+                            The work couples <span style={highlight}> multi-modal</span> forms of interactions (voice, spatial,
                             body) with a distributed graphics platform in order to achieve a
-                            1:1 digital and physical environment.
+                            1:1 <span style={highlight}>digital and physical</span> environment.
                         </div>
                         <div className="text-lg p-4">
-                            We built a framework from scratch that syncs frames across multiple machines, 
+                            We built a framework from scratch that <span style={highlight}>frame-syncs</span> across multiple machines, 
                             and subscribes / publishes to exotic I/O.
+                        </div>
+                        <div className="text-lg p-4">
+                            Form factors include a 3-machine, <span style={highlight}>7200x2700</span> wall, a <span style={highlight}>5-machine-360-degree</span> room, and web.
                         </div>
                     </div>
                     <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
@@ -78,7 +83,7 @@ function App() {
                             Contract work for real-time, 3D, interactive experiences.
                         </div>
                         <div className="text-lg p-4">
-                            We have supported art shows, music performances, and event spaces.
+                            We have supported <span style={highlight}> art</span> shows, <span style={highlight}> music</span> performances, and event spaces.
                         </div>
                     </div>
                     <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
@@ -86,14 +91,14 @@ function App() {
                             Astrum (in development)
                         </div>
                         <div className="text-lg p-4">
-                            Shared world that depends on resource scarcity.
+                            Shared world that depends on resource <span style={highlight}>scarcity</span>.
                         </div>
                         <div className="text-lg p-4">
                             Everything from land ownership to usable game assets are unique. Buying, selling, and trading
                             are all featured in the economy. Players can interact in real-time in-game or through a web experience.
                         </div>
                         <div className="text-lg p-4">
-                            Built in UE4 with supporting infrastructure in Elixir.
+                            Built in <span style={highlight}>UE4</span> with supporting infrastructure in <span style={highlight}>Elixir</span>.
                         </div>
                     </div>
                     <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>
@@ -105,14 +110,14 @@ function App() {
                         </div>
                         <div className="text-lg p-4">
                             Provided analytical insight and monitoring in multiple areas of
-                            growth, including a real-time bidding platform and third-party
+                            growth, including a <span style={highlight}> real-time bidding</span> platform and third-party
                             data targeting 
                         </div>
                         <div className="text-lg p-4">
                             Algorithmic supply optimization
                         </div>
                         <div className="text-lg p-4">
-                            Jumptap was acquired by Millennial Media in 2013.
+                            Jumptap was <span style={highlight}> acquired</span> by Millennial Media in 2013.
                         </div>
                     </div>
                     <div className='w-full m-12 p-12 shadow-2xl rounded' style={card_style}>

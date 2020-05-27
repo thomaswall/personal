@@ -221,7 +221,7 @@ varying vec2 vUv;
 void main() {
 
   // colour is RGBA: u, v, 0, 1
-  vec4 color = vec4(vUv.x, vUv.y, 0.3, 1);
+  vec4 color = mix(vec4(vUv.x, vUv.y, 0.7, 1), vec4(1.0, 0.95, 0.9, 1.0), 0.3);
   gl_FragColor = color;
 
 }
@@ -293,13 +293,13 @@ export default function THREED(props) {
     let addElement = () => {
 
       let div = document.createElement( 'div' );
-      div.style.width = '1280px';
-      div.style.height = '720px';
+      div.style.width = '1600px';
+      div.style.height = '900px';
       div.style.backgroundColor = 'rgba(0, 0, 0, 0)';
 
       let iframe = document.createElement( 'iframe' );
-      iframe.style.width = '1280px';
-      iframe.style.height = '720px';
+      iframe.style.width = '1600px';
+      iframe.style.height = '900px';
       iframe.style.border = '0px';
       iframe.src = "https://player.vimeo.com/video/267450954"
       div.appendChild( iframe );
@@ -315,13 +315,13 @@ export default function THREED(props) {
     let addytoiElement = () => {
 
       let div = document.createElement( 'div' );
-      div.style.width = '1280px';
-      div.style.height = '720px';
+      div.style.width = '1600px';
+      div.style.height = '900px';
       div.style.backgroundColor = 'rgba(0, 0, 0, 0)';
 
       let iframe = document.createElement( 'iframe' );
-      iframe.style.width = '1280px';
-      iframe.style.height = '720px';
+      iframe.style.width = '1600px';
+      iframe.style.height = '900px';
       iframe.style.border = '0px';
       iframe.src = "https://player.vimeo.com/video/212332623"
       div.appendChild( iframe );
@@ -337,13 +337,13 @@ export default function THREED(props) {
     let addAstrumElement = () => {
 
       let div = document.createElement( 'div' );
-      div.style.width = '1280px';
-      div.style.height = '720px';
+      div.style.width = '1600px';
+      div.style.height = '900px';
       div.style.backgroundColor = 'rgba(0, 0, 0, 0)';
 
       let iframe = document.createElement( 'iframe' );
-      iframe.style.width = '1280px';
-      iframe.style.height = '720px';
+      iframe.style.width = '1600px';
+      iframe.style.height = '900px';
       iframe.style.border = '0px';
       iframe.src = "https://www.youtube.com/embed/sWZituP3Wt8"
       div.appendChild( iframe );
@@ -357,7 +357,7 @@ export default function THREED(props) {
     }
 
     React.useEffect(() => {
-        renderer = new THREE.WebGLRenderer({alpha: true})
+        renderer = new THREE.WebGLRenderer({alpha: false})
         renderer.domElement.style.position = "absolute"
         renderer.domElement.style.top = 0
         labelRenderer = new CSS2DRenderer()
@@ -368,6 +368,7 @@ export default function THREED(props) {
         let width = document.getElementById('3d-root').clientWidth
         let height = document.getElementById('3d-root').clientHeight
         scene = new THREE.Scene()
+        scene.background = new THREE.Color( 0xfff5e6 );
         camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
         renderer.setSize( width, height)
         cssrenderer.setSize(width, height)
@@ -376,7 +377,7 @@ export default function THREED(props) {
 
         root.appendChild(renderer.domElement)
         root.appendChild(cssrenderer.domElement)
-        renderer.setClearColor('white', 0)
+        renderer.setClearColor(0xffffff, 0)
 
         let max_width = 300
         let geometry = new THREE.PlaneBufferGeometry( max_width, max_width, 40, 40)
@@ -439,7 +440,7 @@ export default function THREED(props) {
         let perc_scroll = scroll / document.body.scrollHeight
         for(let mesh of vidGroup.children) {
           mesh.lookAt(new THREE.Vector3((mouse.x - 0.5) * exag - 850, (mouse.y - 0.5) * exag + 100, 0.5))
-          mesh.position.x = mesh.orig_pos.x + perc_scroll * 30 * window.innerHeight
+          mesh.position.x = -1500 + mesh.orig_pos.x + perc_scroll * 17 * window.innerHeight
         }
           
     }
