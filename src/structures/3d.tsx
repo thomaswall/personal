@@ -13,6 +13,8 @@ let titleGroup, vidGroup
 let mouse = new THREE.Vector2();
 let raycaster = new THREE.Raycaster();
 let invisPlane
+let scroll = 0
+let starting_content_x = -3500
 
 
 let vertexShader = `
@@ -290,9 +292,6 @@ export default function THREED(props) {
 
     let addElement = () => {
 
-      vidGroup = new THREE.Group();
-			scene.add( vidGroup );
-
       let div = document.createElement( 'div' );
       div.style.width = '1280px';
       div.style.height = '720px';
@@ -306,8 +305,53 @@ export default function THREED(props) {
       div.appendChild( iframe );
 
       let object = new CSS3DObject( div );
-      object.position.set( 0, 0, -1300)
+      object.position.set( starting_content_x, 0, -1300)
       object.rotation.y = 0;
+      object.orig_pos = object.position.clone()
+      vidGroup.add( object );
+
+    }
+
+    let addytoiElement = () => {
+
+      let div = document.createElement( 'div' );
+      div.style.width = '1280px';
+      div.style.height = '720px';
+      div.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+
+      let iframe = document.createElement( 'iframe' );
+      iframe.style.width = '1280px';
+      iframe.style.height = '720px';
+      iframe.style.border = '0px';
+      iframe.src = "https://player.vimeo.com/video/212332623"
+      div.appendChild( iframe );
+
+      let object = new CSS3DObject( div );
+      object.position.set( starting_content_x - 2500, 0, -1300)
+      object.rotation.y = 0;
+      object.orig_pos = object.position.clone()
+      vidGroup.add( object );
+
+    }
+
+    let addAstrumElement = () => {
+
+      let div = document.createElement( 'div' );
+      div.style.width = '1280px';
+      div.style.height = '720px';
+      div.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+
+      let iframe = document.createElement( 'iframe' );
+      iframe.style.width = '1280px';
+      iframe.style.height = '720px';
+      iframe.style.border = '0px';
+      iframe.src = "https://www.youtube.com/embed/sWZituP3Wt8"
+      div.appendChild( iframe );
+
+      let object = new CSS3DObject( div );
+      object.position.set( starting_content_x - 5000, 0, -1300)
+      object.rotation.y = 0;
+      object.orig_pos = object.position.clone()
       vidGroup.add( object );
 
     }
@@ -352,30 +396,35 @@ export default function THREED(props) {
         plane.position.set(0, -7, 10)
         scene.add( plane );
 
-        initTitle(width, height)
+        //initTitle(width, height)
 
         start = Date.now()
 
         document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.addEventListener('scroll', () => scroll = window.scrollY, false)
 
+        vidGroup = new THREE.Group();
+        scene.add(vidGroup)
         addElement()
+        addAstrumElement()
+        addytoiElement()
 
         animate()
     }, [])
 
     let onDocumentMouseMove = ( event ) => {
-      let root3d = document.getElementById("3d-root")
-      mouse.x = ( event.clientX / root3d.clientWidth ) * 2 - 1;
-      mouse.y = - ( event.clientY / root3d.clientHeight ) * 2 + 1;
+      //let root3d = document.getElementById("3d-root")
+      mouse.x = ( event.clientX / window.innerWidth );
+      mouse.y = - ( event.clientY / window.innerHeight );
       raycaster.setFromCamera( mouse.clone(), camera );   
       
-      let objects = raycaster.intersectObject(invisPlane);
-      if(objects.length < 1)
-        return
+      // let objects = raycaster.intersectObject(invisPlane);
+      // if(objects.length < 1)
+      //   return
       
-      let pos = objects[0].point
+      // let pos = objects[0].point
 
-      titlemat.uniforms['mouse'].value = new THREE.Vector2(pos.x, pos.y)
+      //titlemat.uniforms['mouse'].value = new THREE.Vector2(pos.x, pos.y)
   }
 
     let animate = () => {
@@ -385,7 +434,14 @@ export default function THREED(props) {
 
 
         planemat.uniforms[ 'time' ].value = .00025 * ( Date.now() - start );
-        titlemat.uniforms[ 'time' ].value = .001 * ( Date.now() - start );
+        //titlemat.uniforms[ 'time' ].value = .001 * ( Date.now() - start );
+        let exag = 100
+        let perc_scroll = scroll / document.body.scrollHeight
+        for(let mesh of vidGroup.children) {
+          mesh.lookAt(new THREE.Vector3((mouse.x - 0.5) * exag - 850, (mouse.y - 0.5) * exag + 100, 0.5))
+          mesh.position.x = mesh.orig_pos.x + perc_scroll * 30 * window.innerHeight
+        }
+          
     }
 
     return <div id="3d-root" className="w-full h-full"/>
