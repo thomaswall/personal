@@ -1,16 +1,18 @@
 import React from 'react'
 import * as THREE from 'three'
+import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
-import title from 'url:./result.png'
+import title from 'url:../assets/result.png'
+import * as shaders from './shaders'
 
-let renderer, labelRenderer, scene, camera, start
+let renderer, cssrenderer, labelRenderer, scene, camera, start
 
-let plane, planemat
+let plane, planemat, titlemat
+let titleGroup, vidGroup
 
-var rowCount= 20;
-var columnCount=30;
-var stepCount = 1;
-let titleGroup
+let mouse = new THREE.Vector2();
+let raycaster = new THREE.Raycaster();
+let invisPlane
 
 
 let vertexShader = `
@@ -217,46 +219,47 @@ varying vec2 vUv;
 void main() {
 
   // colour is RGBA: u, v, 0, 1
-  gl_FragColor = vec4( vec3( vUv, 0. ), 1. );
+  vec4 color = vec4(vUv.x, vUv.y, 0.3, 1);
+  gl_FragColor = color;
 
 }
 `
 
 export default function THREED(props) {
 
-    let initTitle = () => {
+    let initTitle = (width, height) => {
         const texture = new THREE.TextureLoader().load(title)
-        let pixels = 100;
-        const geo = new THREE.PlaneBufferGeometry( 30, 5, 6 * pixels,pixels);
+        let pixels = 50;
+        let ratio = 12
+        let h = height / 100
+        let w = h * ratio
+        const geo = new THREE.PlaneBufferGeometry( w, h, ratio * pixels, pixels);
+        let ids = new Float32Array(geo.attributes.position.count);
+        for(let i = 0; i < ids.length; i++) {
+          ids[i] = i
+        }
+        geo.setAttribute('coord', new THREE.BufferAttribute(ids, 1));
 
-        var points = new THREE.Points(geo, new THREE.ShaderMaterial({
+        titlemat = new THREE.ShaderMaterial({
             vertexColors: true,
             uniforms: {
               shape: {
                 value: texture
               },
               size: {
-                value: 0.1
+                value: 0.5
               },
               scale: {
                 value: window.innerHeight / 2
+              },
+              time: {
+                value: 0
+              },
+              mouse: {
+                value: new THREE.Vector2()
               }
             },
-            vertexShader: `
-                            
-                uniform float scale;
-                uniform float size;
-                
-                varying vec2 vUv;
-                
-                void main() {
-                
-                  vUv = uv;
-                  //gl_PointSize = size;
-                  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-          
-                }
-            `,
+            vertexShader: shaders.titlevshader,
             fragmentShader: `
                 uniform sampler2D shape;
                 
@@ -269,29 +272,70 @@ export default function THREED(props) {
                 }
             `,
             transparent: false
-          }));
+          });
+        let points = new THREE.Points(geo, titlemat)
         titleGroup = new THREE.Group()
         titleGroup.add(points)
         scene.add(points)
-        points.position.set(0, 5, -50)
+        points.position.set(0, 100, - width / 7)
+
+        let geometry = new THREE.PlaneGeometry( 100, 100, 4 );
+        let material = new THREE.MeshBasicMaterial( {
+          opacity: 0.0,
+          transparent: true} );
+        invisPlane = new THREE.Mesh( geometry, material )
+        invisPlane.position.set(0, 0, -width / 7)
+        scene.add( invisPlane );
+    }
+
+    let addElement = () => {
+
+      vidGroup = new THREE.Group();
+			scene.add( vidGroup );
+
+      let div = document.createElement( 'div' );
+      div.style.width = '1280px';
+      div.style.height = '720px';
+      div.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+
+      let iframe = document.createElement( 'iframe' );
+      iframe.style.width = '1280px';
+      iframe.style.height = '720px';
+      iframe.style.border = '0px';
+      iframe.src = "https://player.vimeo.com/video/267450954"
+      div.appendChild( iframe );
+
+      let object = new CSS3DObject( div );
+      object.position.set( 0, 0, -1300)
+      object.rotation.y = 0;
+      vidGroup.add( object );
+
     }
 
     React.useEffect(() => {
-        renderer = new THREE.WebGLRenderer({alpha: false})
+        renderer = new THREE.WebGLRenderer({alpha: true})
+        renderer.domElement.style.position = "absolute"
+        renderer.domElement.style.top = 0
         labelRenderer = new CSS2DRenderer()
-        let width = window.innerWidth
-        let height = window.innerHeight
+        cssrenderer = new CSS3DRenderer()
+        cssrenderer.domElement.style.zIndex = "1"
+        cssrenderer.domElement.style.position = "absolute"
+        cssrenderer.domElement.style.top = 0
+        let width = document.getElementById('3d-root').clientWidth
+        let height = document.getElementById('3d-root').clientHeight
         scene = new THREE.Scene()
         camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
-        renderer.setSize( width, height);
+        renderer.setSize( width, height)
+        cssrenderer.setSize(width, height)
         camera.position.z = 1
         const root = document.getElementById('3d-root')
 
         root.appendChild(renderer.domElement)
-        renderer.setClearColor('black', 0)
+        root.appendChild(cssrenderer.domElement)
+        renderer.setClearColor('white', 0)
 
-        let max_width = 200
-        let geometry = new THREE.PlaneBufferGeometry( max_width, max_width, max_width / 2, max_width  / 2)
+        let max_width = 300
+        let geometry = new THREE.PlaneBufferGeometry( max_width, max_width, 40, 40)
         geometry.rotateX( - Math.PI / 2 );
         
         planemat = new THREE.ShaderMaterial( {
@@ -304,27 +348,45 @@ export default function THREED(props) {
             vertexShader: vertexShader,
             fragmentShader: fragmentShader
           });
-        // let material = new THREE.MeshBasicMaterial( {
-        //     color: 0xFFE3A0, 
-        //     wireframe: true
-        // } );
         plane = new THREE.Mesh( geometry, planemat );
         plane.position.set(0, -7, 10)
         scene.add( plane );
 
-        initTitle()
+        initTitle(width, height)
 
         start = Date.now()
+
+        document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+        addElement()
 
         animate()
     }, [])
 
+    let onDocumentMouseMove = ( event ) => {
+      let root3d = document.getElementById("3d-root")
+      mouse.x = ( event.clientX / root3d.clientWidth ) * 2 - 1;
+      mouse.y = - ( event.clientY / root3d.clientHeight ) * 2 + 1;
+      raycaster.setFromCamera( mouse.clone(), camera );   
+      
+      let objects = raycaster.intersectObject(invisPlane);
+      if(objects.length < 1)
+        return
+      
+      let pos = objects[0].point
+
+      titlemat.uniforms['mouse'].value = new THREE.Vector2(pos.x, pos.y)
+  }
+
     let animate = () => {
         requestAnimationFrame(animate)
         renderer.render(scene, camera)
+        cssrenderer.render(scene, camera)
+
 
         planemat.uniforms[ 'time' ].value = .00025 * ( Date.now() - start );
+        titlemat.uniforms[ 'time' ].value = .001 * ( Date.now() - start );
     }
 
-    return <div id="3d-root" className="w-full h-full bg-black"/>
+    return <div id="3d-root" className="w-full h-full"/>
 }
