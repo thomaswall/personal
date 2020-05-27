@@ -206,11 +206,11 @@ void main() {
   vUv = uv * 0.5;
 
   // add time to the noise parameters so it's animated
-  noise = 10.0 *  -.10 * turbulence( .5 * normal + time );
+  noise = pnoise(vec3(vUv, 1.0), vec3(10.0)) * 20.0;//10.0 *  -.10 * turbulence( .5 * normal + time );
   float b = 5.0 * pnoise( 0.05 * position + vec3( 2.0 * time ), vec3( 100.0 ) );
   float displacement = - noise + b;
 
-  vec3 newPosition = position + normal * displacement;
+  vec3 newPosition = position + normal * displacement * 2.3;
   gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
 
 }
@@ -218,11 +218,12 @@ void main() {
 
 let fragmentShader = `
 varying vec2 vUv;
+varying float noise;
 
 void main() {
 
   // colour is RGBA: u, v, 0, 1
-  vec4 color = mix(vec4(vUv.x, vUv.y, 0.7, 1), vec4(1.0, 0.95, 0.9, 1.0), 0.3);
+  vec4 color = mix(vec4(pow(noise, 1.2) / 2. * vUv, 0.7, 1), vec4(0.93, 0.95, 0.9, 1.0), 0.6);
   gl_FragColor = color;
 
 }
@@ -385,9 +386,9 @@ export default function THREED(props) {
         root.appendChild(cssrenderer.domElement)
         renderer.setClearColor(0xffffff, 0)
 
-        let max_width = 300
-        let geometry = new THREE.PlaneBufferGeometry( max_width, max_width, 40, 40)
-        geometry.rotateX( - Math.PI / 2 );
+        let max_width = 400
+        let geometry = new THREE.PlaneBufferGeometry( max_width, max_width, 50, 50)
+        geometry.rotateX( - Math.PI / 2.8 );
         
         planemat = new THREE.ShaderMaterial( {
             uniforms: {
@@ -400,7 +401,7 @@ export default function THREED(props) {
             fragmentShader: fragmentShader
           });
         plane = new THREE.Mesh( geometry, planemat );
-        plane.position.set(0, -7, 10)
+        plane.position.set(0, -60, 10)
         scene.add( plane );
 
         //initTitle(width, height)
