@@ -223,7 +223,7 @@ varying float noise;
 void main() {
 
   // colour is RGBA: u, v, 0, 1
-  vec4 color = mix(vec4(pow(noise, 1.2) / 2. * vUv, 0.7, 1), vec4(0.93, 0.95, 0.9, 1.0), 0.6);
+  vec4 color = mix(vec4(noise * 1.5 * vUv, 1.0, 1.0), vec4(0.93, 0.95, 0.9, 1.0), 0.7);
   gl_FragColor = color;
 
 }
