@@ -375,7 +375,7 @@ export default function THREED(props) {
         let width = document.getElementById('3d-root').clientWidth
         let height = document.getElementById('3d-root').clientHeight
         scene = new THREE.Scene()
-        scene.background = new THREE.Color( 0xfff5e6 );
+        scene.background = new THREE.Color( 0xe6e6ff );
         camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
         renderer.setSize( width, height)
         cssrenderer.setSize(width, height)
