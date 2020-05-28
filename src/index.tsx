@@ -56,7 +56,7 @@ function App() {
                             Lead Software Engineer
                         </div>
                         <div className="text-lg p-4">
-                            I currently lead a engineering team that develops 3D applications in pixel-rich,
+                            I currently lead an engineering team that develops 3D applications in pixel-rich,
                             immersive spaces across North America and Europe.
                         </div>
                         <div className="text-lg p-4">
