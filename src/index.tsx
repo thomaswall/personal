@@ -105,7 +105,7 @@ function App() {
                         <div className="text-4xl p-4">
                             Millennial Media (Formerly Jumptap)
                         </div>
-                        <div className="text-lg p-4">
+                        <div className="text-2xl p-4">
                             Business Development Engineer 
                         </div>
                         <div className="text-lg p-4">
