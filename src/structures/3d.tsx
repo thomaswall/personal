@@ -458,7 +458,7 @@ export default function THREED(props) {
         )
       );
       mesh.position.x =
-        -200 * wratio + mesh.orig_pos.x + perc_scroll * 6000 * wratio;
+        -200 * wratio + mesh.orig_pos.x + perc_scroll * 17000 * wratio;
     }
   };
 
