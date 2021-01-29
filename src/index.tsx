@@ -61,9 +61,13 @@ function App() {
             style={card_style}
             id="ibm"
           >
-            <div className="text-4xl p-4 flex">
-              <div>Hivemapper</div>
-            </div>
+            <a
+              className="text-4xl p-4 underline"
+              href="https://hivemapper.com"
+              target="_blank"
+            >
+              Hivemapper
+            </a>
             <div className="text-2xl p-4">3D Specialist</div>
             <div className="text-lg p-4">
               I am a primary architect of all ongoing web features for all
