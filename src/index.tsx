@@ -42,6 +42,14 @@ function App() {
             <a
               style={highlight}
               className="text-xs pt-8 pl-4"
+              href="https://opensea.io/assets/astrum-relics"
+              target="_blank"
+            >
+              NFT
+            </a>
+            <a
+              style={highlight}
+              className="text-xs pt-8 pl-4"
               href="https://twitter.com/llawmot"
               target="_blank"
             >
