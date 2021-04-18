@@ -37,7 +37,7 @@ function App() {
               my skills in an environment where I can not only broaden the scope
               of what is possible for an immersive experience, but also
               contribute to the aesthetic choices of the applications
-              themselves.
+              themselves. Message me at thomas j wall 1 at gmail.
             </div>
             <a
               style={highlight}
