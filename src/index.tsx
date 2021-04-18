@@ -58,7 +58,7 @@ function App() {
             <a
               style={highlight}
               className="text-xs pt-8 pl-4"
-              href=https://github.com/thomaswall"
+              href="https://github.com/thomaswall"
               target="_blank"
             >
               github
