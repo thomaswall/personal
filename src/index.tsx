@@ -53,7 +53,15 @@ function App() {
               href="https://opensea.io/assets/astrum-relics"
               target="_blank"
             >
-              OpenSea
+              opensea
+            </a>
+            <a
+              style={highlight}
+              className="text-xs pt-8 pl-4"
+              href=https://github.com/thomaswall"
+              target="_blank"
+            >
+              github
             </a>
             <a
               style={highlight}
@@ -61,7 +69,7 @@ function App() {
               href="https://twitter.com/llawmot"
               target="_blank"
             >
-              Twitter
+              twitter
             </a>
             <a
               style={highlight}
@@ -69,7 +77,7 @@ function App() {
               href="https://linkedin.com/in/llawmot"
               target="_blank"
             >
-              LinkedIn
+              linkedin
             </a>
           </div>
           <div
