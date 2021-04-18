@@ -42,10 +42,18 @@ function App() {
             <a
               style={highlight}
               className="text-xs pt-8 pl-4"
+              href="https://www.hicetnunc.xyz/tz/tz1UvMm3KGc68UqD1eZjbjq8Aphvudckuvha"
+              target="_blank"
+            >
+              hicetnunc
+            </a>
+            <a
+              style={highlight}
+              className="text-xs pt-8 pl-4"
               href="https://opensea.io/assets/astrum-relics"
               target="_blank"
             >
-              NFT
+              OpenSea
             </a>
             <a
               style={highlight}
