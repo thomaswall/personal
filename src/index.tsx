@@ -134,7 +134,7 @@ function App() {
             id="ibm"
           >
             <div className="text-4xl p-4 flex">
-              <img src={wecIcon} />
+              <img src={wecIcon} className="w-12 h-auto" />
               <div className="p-4">IBM Immersive Environments</div>
             </div>
             <div className="text-2xl p-4">Lead Software Engineer</div>
