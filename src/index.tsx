@@ -18,11 +18,11 @@ function App() {
         <div
           className="flex flex-col p-12 z-20 absolute"
           style={{
-            width: `80vw`,
+            width: `90vw`,
           }}
         >
           <div
-            className="w-full m-12 p-12 shadow-2xl rounded"
+            className="w-full mt-12 p-12 shadow-2xl rounded"
             style={card_style}
           >
             <div className="text-6xl p-4">Tom Wall</div>
@@ -78,7 +78,7 @@ function App() {
             </a>
           </div>
           <div
-            className="w-full m-12 p-12 shadow-2xl rounded"
+            className="w-full mt-12 p-12 shadow-2xl rounded"
             style={card_style}
             id="ibm"
           >
@@ -101,7 +101,7 @@ function App() {
             </div>
           </div>
           <div
-            className="w-full m-12 p-12 shadow-2xl rounded"
+            className="w-full mt-12 p-12 shadow-2xl rounded"
             style={card_style}
             id="ibm"
           >
@@ -129,7 +129,7 @@ function App() {
             </div>
           </div>
           <div
-            className="w-full m-12 p-12 shadow-2xl rounded"
+            className="w-full mt-12 p-12 shadow-2xl rounded"
             style={card_style}
             id="ibm"
           >
@@ -169,7 +169,7 @@ function App() {
             </div>
           </div>
           <div
-            className="w-full m-12 p-12 shadow-2xl rounded"
+            className="w-full mt-12 p-12 shadow-2xl rounded"
             style={card_style}
             id="ytoi"
           >
@@ -191,7 +191,7 @@ function App() {
             </div>
           </div>
           <div
-            className="w-full m-12 p-12 shadow-2xl rounded"
+            className="w-full mt-12 p-12 shadow-2xl rounded"
             style={card_style}
             id="astrum"
           >
@@ -212,7 +212,7 @@ function App() {
             </div>
           </div>
           <div
-            className="w-full m-12 p-12 shadow-2xl rounded"
+            className="w-full mt-12 p-12 shadow-2xl rounded"
             style={card_style}
           >
             <div className="text-4xl p-4">
@@ -232,7 +232,7 @@ function App() {
             </div>
           </div>
           <div
-            className="w-full m-12 p-12 shadow-2xl rounded"
+            className="w-full mt-12 p-12 shadow-2xl rounded"
             style={card_style}
           >
             <div className="text-4xl p-4">Skills</div>
