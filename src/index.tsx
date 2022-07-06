@@ -1,7 +1,7 @@
-import "/index.css";
+import "./index.css";
 import React, { useEffect } from "react";
 import * as ReactDOM from "react-dom";
-import THREED from "/structures/3d";
+import THREED from "./structures/3d";
 
 const wecIcon = require("url:./assets/wecIcon.svg");
 
@@ -14,12 +14,11 @@ function App() {
       <div className="w-full left-0 h-screen fixed z-10">
         <THREED />
       </div>
-      <div className="w-screen font-ibmmono bg-gray-500">
+      <div className="w-screen font-ibmmono bg-gray-500 flex justify-center">
         <div
           className="flex flex-col p-12 z-20 absolute"
           style={{
-            marginLeft: `43vw`,
-            width: `50vw`,
+            width: `80vw`,
           }}
         >
           <div
@@ -28,14 +27,12 @@ function App() {
           >
             <div className="text-6xl p-4">Tom Wall</div>
             <div className="text-base p-4">
-              I'm an interactive-<span style={highlight}>graphics </span>
-              and <span style={highlight}> backend</span> engineer. I specialize
-              in
+              I'm a <span style={highlight}>full-stack </span>engineer. I specialize in
               <span style={highlight}> real-time</span> applications running in
-              a multitude of different environments that influence the user's
+              different environments that influence the user's
               behavior through a meaningful experience. I'm looking to leverage
-              my skills in an environment where I can not only broaden the scope
-              of what is possible for an immersive experience, but also
+              my skills in an space where I can not only broaden the scope
+              of what is possible for a responsive experience, but also
               contribute to the aesthetic choices of the applications
               themselves. Message me at thomas j wall 1 at gmail.
             </div>
@@ -87,6 +84,29 @@ function App() {
           >
             <a
               className="text-4xl p-4 underline"
+              href="https://goodvisit.com"
+              target="_blank"
+            >
+              Goodvisit
+            </a>
+            <div className="text-2xl p-4">Founder and CTO</div>
+            <div className="text-lg p-4">
+              I am currently the primary architect and contributor for the implementation of a real-time eligibility and patient fee estimation service for healthcare providers. 
+            </div>
+            <div className="text-lg p-4">
+            Highlighted work: A fully serverless architecture that relies mostly on client-facing json:api schemas, aws lambda, sqs, postgres, and dynamodb. provider-focused frontend (react/chakra-ui) facilitates advanced client workflows for monitoring and making changes to existing patient profiles and negotiated payer rates.
+            </div>
+            <div className="text-lg p-4">
+              Goodvisit process 2M+ patient estimates per year.
+            </div>
+          </div>
+          <div
+            className="w-full m-12 p-12 shadow-2xl rounded"
+            style={card_style}
+            id="ibm"
+          >
+            <a
+              className="text-4xl p-4 underline"
               href="https://hivemapper.com"
               target="_blank"
             >
@@ -94,11 +114,11 @@ function App() {
             </a>
             <div className="text-2xl p-4">3D Specialist</div>
             <div className="text-lg p-4">
-              I am a primary architect of all ongoing web features for all
+              I was the primary architect of all ongoing web features for all
               user-facing 3D map development.
             </div>
             <div className="text-lg p-4">
-              My main objectives have been to modernize the state machine and
+              My main objectives were to modernize the state machine and
               rendering pipelines of the application given a fixed number of
               camera/user inputs.
             </div>
