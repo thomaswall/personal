@@ -418,9 +418,9 @@ export default function THREED(props) {
     vidGroup = new THREE.Group();
     scene.add(vidGroup);
     wratio = window.innerWidth / window.innerHeight;
-    addElement();
-    addAstrumElement();
-    addytoiElement();
+    // addElement();
+    // addAstrumElement();
+    // addytoiElement();
 
     animate();
   }, []);
