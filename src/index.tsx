@@ -133,7 +133,7 @@ function App() {
             style={card_style}
             id="ibm"
           >
-            <div className="text-4xl p-4 flex align-center">
+            <div className="text-4xl p-4 flex items-center">
               <img src={wecIcon} className="w-12 h-12" />
               <div className="p-4">IBM Immersive Environments</div>
             </div>
